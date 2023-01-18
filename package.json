@@ -1,0 +1,16 @@
+{
+  "name": "problemsolverback",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "generic-pool": "^3.9.0",
+    "sqlite3": "^5.1.4"
+  }
+}

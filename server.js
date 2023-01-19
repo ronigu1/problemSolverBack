@@ -1,10 +1,20 @@
 var express = require("express");
 const db = require("./routes/utils/db");
 const formRouter = require("./routes/form")
+var cors = require('cors')
 
 // Creation of the express server (app)
 var app = express();
 app.use(express.json()); // parse application/json
+
+
+const corsConfig = {
+  origin: true,
+  credentials: true
+};
+
+app.use(cors(corsConfig));
+app.options("*", cors(corsConfig));
 
 // Definition of a local server port (HTTP_PORT)
 var port = 3000 || "80";; //local=3000 remote=80

@@ -1,11 +1,6 @@
 let db = require('./db');
 // let dfUtils
-dfUtils = db.createDb();
-
-const pool = require('generic-pool');
-const sqlite3 = require('sqlite3').verbose();
-
-
+dfUtils = db.openDB();
 
 async function insertRow(table,data) {
     let keys = Object.keys(data);
@@ -20,10 +15,10 @@ async function insertRow(table,data) {
             } else {
                 resolve(this.lastID);
             }
-            // db.closeDb(dfUtils);
         });
     });
 }
+//event exit
 process.on('exit', function() {
     db.closeDb(dfUtils);
 });

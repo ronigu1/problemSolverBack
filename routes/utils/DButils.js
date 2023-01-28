@@ -1,6 +1,6 @@
 let db = require('./db');
-// let dfUtils
-dfUtils = db.openDB();
+// let dbInstance
+dbInstance = db.openDB();
 
 async function insertRow(table,data) {
     let keys = Object.keys(data);
@@ -9,7 +9,7 @@ async function insertRow(table,data) {
     let sql = `INSERT INTO ${table} (${keys.join(', ')}) VALUES (${placeholders})`
 
     return new Promise((resolve, reject) => {
-        dfUtils.run(sql, values, function(err) {
+        dbInstance.run(sql, values, function(err) {
             if (err) {
                 reject(err);
             } else {
@@ -18,9 +18,9 @@ async function insertRow(table,data) {
         });
     });
 }
-//event exit
+//event exit(ctrl+c in terminal)
 process.on('exit', function() {
-    db.closeDb(dfUtils);
+    db.closeDb(dbInstance);
 });
   
 exports.insertRow = insertRow;

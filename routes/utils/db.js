@@ -1,8 +1,6 @@
 var sqlite3 = require('sqlite3').verbose();
 
-// let db;
 // The OPEN_READWRITE flag is used to open the database for both reading and writing.
-
 function openDB() {
   return new sqlite3.Database('C:/sqlite/roojoomDB.db',
   sqlite3.OPEN_READWRITE, (err) => {
@@ -19,11 +17,8 @@ function closeDb(db) {
         if(err){
             console.error(err.message);
         }
-        console.log('data connection closed')
     });
 }
-
-
 
 module.exports = {
     openDB: openDB,
